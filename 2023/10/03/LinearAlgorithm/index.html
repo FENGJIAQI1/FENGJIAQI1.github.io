@@ -16,15 +16,15 @@
   <meta name="author" content="JIAQI">
   <meta name="keywords" content="">
   
-    <meta name="description" content="AbstractIn this blog, common linear algorithms [Match Filter(Maximum ratio)、Zero Forcing、Minimum mean-square error ] will be presented in detail with different perspectives.  Introductions The linear">
+    <meta name="description" content="Abstract In this blog, common linear algorithms [Match Filter(Maximum ratio)、Zero Forcing、Minimum mean-square error ] will be presented in detail with different perspectives. Introduction The lin">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LinearAlgorithm">
 <meta property="og:url" content="http://example.com/2023/10/03/LinearAlgorithm/index.html">
 <meta property="og:site_name" content="JIAQI">
-<meta property="og:description" content="AbstractIn this blog, common linear algorithms [Match Filter(Maximum ratio)、Zero Forcing、Minimum mean-square error ] will be presented in detail with different perspectives.  Introductions The linear">
+<meta property="og:description" content="Abstract In this blog, common linear algorithms [Match Filter(Maximum ratio)、Zero Forcing、Minimum mean-square error ] will be presented in detail with different perspectives. Introduction The lin">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-10-03T05:50:02.000Z">
-<meta property="article:modified_time" content="2023-10-03T08:51:55.896Z">
+<meta property="article:modified_time" content="2023-10-03T11:51:02.744Z">
 <meta property="article:author" content="JIAQI">
 <meta property="article:tag" content="Signal detection、Communication">
 <meta name="twitter:card" content="summary_large_image">
@@ -249,7 +249,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.6k words
+          2.8k words
         
       </span>
     
@@ -260,7 +260,7 @@
         
         
         
-          14 mins
+          23 mins
         
       </span>
     
@@ -310,35 +310,114 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h1><pre><code class="hljs">In this blog, common linear algorithms [Match Filter(Maximum ratio)、Zero Forcing、Minimum mean-square error ] will be presented in detail with different perspectives.
-</code></pre>
-<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>s</p>
-<p>The linear MF criterion is optimal for maximizing the received SNR in the presence of additive stochastic noise. The linear ZF criterion is optimal for maximizing the received signal-tointerference ratio (SIR). By contrast, the linear MMSE criterion based detector is optimal amongst all linear detectors in terms of achieving the MMSE, and in essence it is also optimal for maximizing the received signal-to-interference-plus-noise ratio (SINR) amongst linear detectors.  <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/7244171">Fifty Years of MIMO Detection: The Road to Large-Scale MIMOs</a></p>
-<p>When the columns of the H-matrix have orthogonality (e.g., single-user and Msassive MIMO detection), above three are equivalent and they achieve optimal performance.  <a href="">fundamentals of massive mimo</a></p>
-<h1 id="Derivation"><a href="#Derivation" class="headerlink" title="Derivation"></a>Derivation</h1><p>In this section, the derivation will be described in terms of the optimization objective,   Lagrange multiplier method,regularization, and linear relationship (ZF&#x2F;MMSE).</p>
-<h2 id="MF"><a href="#MF" class="headerlink" title="MF"></a>MF</h2><h2 id="ZF"><a href="#ZF" class="headerlink" title="ZF"></a>ZF</h2><h2 id="MMSE"><a href="#MMSE" class="headerlink" title="MMSE"></a>MMSE</h2><p>System model</p>
-<p>$$<br>{\bf{y &#x3D; Hx + n}}<br>$$</p>
+                <h1 id="abstract">Abstract</h1>
+<p>In this blog, common linear algorithms [Match Filter(Maximum
+ratio)、Zero Forcing、Minimum mean-square error ] will be presented in
+detail with different perspectives.</p>
+<h1 id="introduction">Introduction</h1>
+<p>The linear MF criterion is optimal for maximizing the received SNR in
+the presence of additive stochastic noise. The linear ZF criterion is
+optimal for maximizing the received signal-tointerference ratio (SIR).
+By contrast, the linear MMSE criterion based detector is optimal amongst
+all linear detectors in terms of achieving the MMSE, and in essence it
+is also optimal for maximizing the received
+signal-to-interference-plus-noise ratio (SINR) amongst linear detectors.
+<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/7244171">Fifty Years of
+MIMO Detection: The Road to Large-Scale MIMOs</a></p>
+<p>When the columns of the H-matrix have orthogonality (e.g.,
+single-user and Msassive MIMO detection), above three are equivalent and
+they achieve optimal performance. <a href="">fundamentals of massive
+mimo</a></p>
+<h1 id="derivation">Derivation</h1>
+<p>In this section, the derivation will be described in terms of the
+optimization objective, Lagrange multiplier method,regularization, and
+linear relationship (ZF/MMSE).</p>
+<h2 id="mf">MF</h2>
+<h2 id="zf">ZF</h2>
+<h2 id="mmse">MMSE</h2>
+<p>System model</p>
+<p><span class="math display">\[
+{\bf{y = Hx + n}}
+\]</span></p>
 <p>Target result</p>
-<p>$$<br>{\bf{\hat x &#x3D; Wy}}<br>$$</p>
-<h3 id="perspective-1"><a href="#perspective-1" class="headerlink" title="perspective 1:"></a>perspective 1:</h3><p><em>Solve the objective function directly</em></p>
+<p><span class="math display">\[
+{\bf{\hat x = Wy}}
+\]</span></p>
+<h3 id="perspective-1">perspective 1:</h3>
+<p><em>Solve the objective function directly</em></p>
 <p>Estimated error</p>
-<p>$$<br>{\bf{e &#x3D; \hat x - x &#x3D; Wy - x}}<br>$$</p>
+<p><span class="math display">\[
+{\bf{e = \hat x - x = Wy - x}}
+\]</span></p>
 <p>The estimated error is a random variable, find the expectation</p>
-<p>$$</p>
-{{\bf{e}}_{{\bf{MSE}}}}{\bf{ = E||Wy - x|}}{{\bf{|}}^{\bf{2}}} 
-<p>$$</p>
+<p><span class="math display">\[
+{{\bf{e}}_{{\bf{MSE}}}}{\bf{ = E||Wy -
+x|}}{{\bf{|}}^{\bf{2}}}
+\]</span></p>
 <p>Function for solving</p>
-<p>$$</p>
-} {{\bf{W}}_{{\bf{MMSE}}}}  {\bf{ = }}   \mathop {{\bf{argmin}}} \limits_{\bf{w}}  {\bf{E||Wy - x|}} {{\bf{|}}^{\bf{2}}} }
-<p>$$</p>
-<p> Using the principle of orthogonality</p>
-<p>$$</p>
-<p>$$</p>
+<p><span class="math display">\[
+{{\bf{W}}_{{\bf{MMSE}}}}  {\bf{ = }}   \mathop
+{{\bf{argmin}}} \limits_{\bf{w}}  {\bf{E||Wy - x|}}
+{{\bf{|}}^{\bf{2}}}
+\]</span></p>
+<p>Using the principle of orthogonality</p>
+<p><span class="math display">\[
+{\bf{E[}}{{\bf{e}}_{\bf{0}}}{{\bf{y}}^{\bf{H}}}{\bf{]
+= 0}}
+\]</span></p>
+<p><span class="math display">\[
+{\bf{E[}}{{\bf{W}}_{{\bf{MMSE}}}}{\bf{y}}{{\bf{y}}^{\bf{H}}}{\bf{
+- x}}{{\bf{y}}^{\bf{H}}}{\bf{] = 0}}
+\]</span></p>
+<p><span class="math display">\[
+{\bf{E[}}{{\bf{W}}_{{\bf{MMSE}}}}{\bf{(Hx + n)(Hx +
+n}}{{\bf{)}}^{\bf{H}}}{\bf{ - x(Hx +
+n}}{{\bf{)}}^{\bf{H}}}{\bf{] = 0}}
+\]</span></p>
+<p><span class="math display">\[
+{\bf{E}}\left[ {{{\bf{W}}_{MMSE}}\left(
+{{\bf{Hxx}}{{\bf{x}}^H}{{\bf{H}}^H} +
+{\bf{Hx}}{{\bf{n}}^H} +
+{\bf{n}}{{\bf{x}}^H}{{\bf{H}}^H} +
+{\bf{n}}{{\bf{n}}^H}} \right) - \left(
+{{\bf{x}}{{\bf{x}}^H}{{\bf{H}}^H} +
+{\bf{x}}{{\bf{n}}^H}} \right)} \right] = {\bf{0}}
+\]</span></p>
+<p><span class="math display">\[
+{{\bf{W}}_{MMSE}}\left( {{\bf{H}}E\left\lceil
+{{\bf{x}}{{\bf{x}}^H}} \right\rceil
+{{\bf{H}}^H} + {\bf{H}}E\left\lceil
+{{\bf{x}}{{\bf{n}}^H}} \right\rceil  + \left\lceil
+{{\bf{n}}{{\bf{x}}^H}} \right\rceil
+{{\bf{H}}^H} + E\left\lceil
+{{\bf{n}}{{\bf{n}}^H}} \right\rceil } \right) -
+\left( {\left\lceil {{\bf{x}}{{\bf{x}}^H}}
+\right\rceil {{\bf{H}}^H} + E\left\lceil
+{{\bf{x}}{{\bf{n}}^H}} \right\rceil } \right) =
+{\bf{0}}
+\]</span></p>
+<p><span class="math display">\[
+{{\bf{W}}_{MMSE}}\left( {{\bf{H}}E\left[
+{{\bf{x}}{{\bf{x}}^H}}
+\right]{{\bf{H}}^H} + E\left[
+{{\bf{x}}{{\bf{x}}^H}}
+\right]{{\bf{H}}^H}} \right) = {\bf{0}}
+\]</span></p>
+<p><span class="math display">\[
+{{\bf{W}}_{MMSE}} =
+{{\bf{R}}_x}{{\bf{H}}^H}{\left(
+{{\bf{H}}{{\bf{R}}_x}{{\bf{H}}^H} +
+{{\bf{R}}_n}} \right)^{ - 1}}
+\]</span></p>
 <p>The numerator and denominator are simultaneously multiplied by Rx</p>
-<p>$$</p>
-}{{\bf{W}}_{MMSE}} = {{\bf{H}}^H}{\left( {{\bf{H}}{{\bf{H}}^H} + \frac{{{{\bf{R}}_n}}}{{{{\bf{R}}_x}}}} \right)^{ - 1}}} 
-<p>$$</p>
-<h3 id="perspective-2"><a href="#perspective-2" class="headerlink" title="perspective 2:"></a><strong>perspective 2:</strong></h3><p><em>Lagrange multiplier method</em></p>
+<p><span class="math display">\[
+{{\bf{W}}_{MMSE}} =
+{{\bf{R}}_x}{{\bf{H}}^H}{\left(
+{{\bf{H}}{{\bf{R}}_x}{{\bf{H}}^H} +
+{{\bf{R}}_n}} \right)^{ - 1}}]
+\]</span></p>
+<h3 id="perspective-2"><strong>perspective 2:</strong></h3>
+<p><em>Lagrange multiplier method</em></p>
 
                 
               </div>
@@ -464,6 +543,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -682,6 +767,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script defer src="/js/leancloud.js" ></script>
 
