@@ -16,14 +16,17 @@
   <meta name="author" content="JIAQI">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="AbstractIn this blog, common linear algorithms [Match Filter(Maximum ratio)、Zero Forcing、Minimum mean-square error ] will be presented in detail with different perspectives.  Introductions The linear">
+<meta property="og:type" content="article">
 <meta property="og:title" content="LinearAlgorithm">
 <meta property="og:url" content="http://example.com/2023/10/03/LinearAlgorithm/index.html">
 <meta property="og:site_name" content="JIAQI">
+<meta property="og:description" content="AbstractIn this blog, common linear algorithms [Match Filter(Maximum ratio)、Zero Forcing、Minimum mean-square error ] will be presented in detail with different perspectives.  Introductions The linear">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-10-03T05:50:02.000Z">
-<meta property="article:modified_time" content="2023-10-03T05:50:02.803Z">
+<meta property="article:modified_time" content="2023-10-03T08:51:55.896Z">
 <meta property="article:author" content="JIAQI">
+<meta property="article:tag" content="Signal detection、Communication">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -121,7 +124,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>JIAQI</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -217,7 +220,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/back2.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -246,7 +249,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 words
+          1.6k words
         
       </span>
     
@@ -257,7 +260,7 @@
         
         
         
-          1 mins
+          14 mins
         
       </span>
     
@@ -307,7 +310,36 @@
             
               <div class="markdown-body">
                 
-                
+                <h1 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h1><pre><code class="hljs">In this blog, common linear algorithms [Match Filter(Maximum ratio)、Zero Forcing、Minimum mean-square error ] will be presented in detail with different perspectives.
+</code></pre>
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>s</p>
+<p>The linear MF criterion is optimal for maximizing the received SNR in the presence of additive stochastic noise. The linear ZF criterion is optimal for maximizing the received signal-tointerference ratio (SIR). By contrast, the linear MMSE criterion based detector is optimal amongst all linear detectors in terms of achieving the MMSE, and in essence it is also optimal for maximizing the received signal-to-interference-plus-noise ratio (SINR) amongst linear detectors.  <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/7244171">Fifty Years of MIMO Detection: The Road to Large-Scale MIMOs</a></p>
+<p>When the columns of the H-matrix have orthogonality (e.g., single-user and Msassive MIMO detection), above three are equivalent and they achieve optimal performance.  <a href="">fundamentals of massive mimo</a></p>
+<h1 id="Derivation"><a href="#Derivation" class="headerlink" title="Derivation"></a>Derivation</h1><p>In this section, the derivation will be described in terms of the optimization objective,   Lagrange multiplier method,regularization, and linear relationship (ZF&#x2F;MMSE).</p>
+<h2 id="MF"><a href="#MF" class="headerlink" title="MF"></a>MF</h2><h2 id="ZF"><a href="#ZF" class="headerlink" title="ZF"></a>ZF</h2><h2 id="MMSE"><a href="#MMSE" class="headerlink" title="MMSE"></a>MMSE</h2><p>System model</p>
+<p>$$<br>{\bf{y &#x3D; Hx + n}}<br>$$</p>
+<p>Target result</p>
+<p>$$<br>{\bf{\hat x &#x3D; Wy}}<br>$$</p>
+<h3 id="perspective-1"><a href="#perspective-1" class="headerlink" title="perspective 1:"></a>perspective 1:</h3><p><em>Solve the objective function directly</em></p>
+<p>Estimated error</p>
+<p>$$<br>{\bf{e &#x3D; \hat x - x &#x3D; Wy - x}}<br>$$</p>
+<p>The estimated error is a random variable, find the expectation</p>
+<p>$$</p>
+{{\bf{e}}_{{\bf{MSE}}}}{\bf{ = E||Wy - x|}}{{\bf{|}}^{\bf{2}}} 
+<p>$$</p>
+<p>Function for solving</p>
+<p>$$</p>
+} {{\bf{W}}_{{\bf{MMSE}}}}  {\bf{ = }}   \mathop {{\bf{argmin}}} \limits_{\bf{w}}  {\bf{E||Wy - x|}} {{\bf{|}}^{\bf{2}}} }
+<p>$$</p>
+<p> Using the principle of orthogonality</p>
+<p>$$</p>
+<p>$$</p>
+<p>The numerator and denominator are simultaneously multiplied by Rx</p>
+<p>$$</p>
+}{{\bf{W}}_{MMSE}} = {{\bf{H}}^H}{\left( {{\bf{H}}{{\bf{H}}^H} + \frac{{{{\bf{R}}_n}}}{{{{\bf{R}}_x}}}} \right)^{ - 1}}} 
+<p>$$</p>
+<h3 id="perspective-2"><a href="#perspective-2" class="headerlink" title="perspective 2:"></a><strong>perspective 2:</strong></h3><p><em>Lagrange multiplier method</em></p>
+
                 
               </div>
             
@@ -315,6 +347,13 @@
             <div>
               <div class="post-metas my-3">
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Signal-detection%E3%80%81Communication/" class="print-no-link">#Signal detection、Communication</a>
+      
+    </div>
   
 </div>
 
@@ -372,12 +411,6 @@
                   </article>
                   <article class="post-next col-6">
                     
-                    
-                      <a href="/2023/10/03/hello-world/" title="Hello World">
-                        <span class="hidden-mobile">Hello World</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
                     
                   </article>
                 </div>
